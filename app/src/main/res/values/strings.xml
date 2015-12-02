@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">FormaOne</string>
+
+    <string name="dummy_content">FormaOne</string>
+
+    <string name="login">Adresse email</string>
+    <string name="password">Mot de passe</string>
+    <string name="action_settings">Settings</string>
+    <string name="title">FormaOne</string>
+    <string name="connect">Se connecter</string>
+    <string name="title_activity_home">Home</string>
+    <string name="dummy_button">Dummy Button</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_list_etablissement">Liste des établissements</string>
+    <string name="title_activity_etablissement">Etablissement</string>
+    
+</resources>
