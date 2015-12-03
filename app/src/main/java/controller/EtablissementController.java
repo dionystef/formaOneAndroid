@@ -23,6 +23,8 @@ public class EtablissementController {
     // variables //
     private ArrayList<Etablissement> listEtablissement = new ArrayList<>();
     private JsonOffLine mock = new JsonOffLine();
+    private Rest rest = new Rest();
+    private String target = "school";
 
 
     /**
@@ -40,7 +42,18 @@ public class EtablissementController {
      */
     public ArrayList<Etablissement> recupListEtablissements() throws JSONException {
 
-        JSONObject receiveListeEtablissement =  new JSONObject(mock.listeEtablissements());
+        // variable //
+
+        List<NameValuePair> sendData = new ArrayList<NameValuePair>();
+        sendData.add(new BasicNameValuePair("action", "all"));
+        sendData.add(new BasicNameValuePair("target", target));
+        sendData.add(new BasicNameValuePair("section", "school"));
+
+        //JSONObject receiveListeEtablissement =  new JSONObject(mock.listeEtablissements());
+        // connexion //
+        JSONObject receiveListeEtablissement =  rest.send("GET", sendData);
+        Log.e("receiveListe", receiveListeEtablissement.toString());
+
         JSONObject value = receiveListeEtablissement.getJSONObject("value");
         JSONArray jsonListEtablissement = value.getJSONArray("school");
 

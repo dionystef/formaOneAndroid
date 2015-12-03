@@ -38,7 +38,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
             token = profCtrl.login(textLogin.getText().toString(), textPassword.getText().toString());
-                Log.e("token: ", String.valueOf(profCtrl.login(textLogin.getText().toString(), textPassword.getText().toString())));
 
                 if (token > 0) {
                     // arguments passés aux autres vues //

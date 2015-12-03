@@ -35,33 +35,9 @@ public class ProfessorController {
     private Context context;
     private List<Enum_contact_type> enumContactTypes = new ArrayList<Enum_contact_type>();
     private Rest rest = new Rest();
-    List<NameValuePair> sendData = new ArrayList<NameValuePair>();
+    private List<NameValuePair> sendData = new ArrayList<NameValuePair>();
     private int token = 1;
     private int idProf = 0;
-
-    /**
-     * Json professeur
-     */
-    public String professorJson = "{" +
-                        "professor: {" +
-                        "   id: 1," +
-                        "   contact:{" +
-                        "       id: 1," +
-                        "       firstname: steph," +
-                        "       lastname: toto," +
-                        "       mail: toto@steph.fr," +
-                        "       phone: 0606060606," +
-                        "       enum_contact_type_id: 1" +
-                        "   }," +
-                        "   address:{" +
-                        "       id: 2," +
-                        "       main: 'rue tata'," +
-                        "       secondary: 'rue B'," +
-                        "       zipcode: 06100," +
-                        "       city: nice"+
-                            "}"+
-                        "}" +
-                    "}";
 
     /**
      * on passe le context au ctlr du prof
@@ -109,11 +85,9 @@ public class ProfessorController {
         sendData.add(new BasicNameValuePair("target", "login"));
         sendData.add(new BasicNameValuePair("login", login));
         sendData.add(new BasicNameValuePair("passwd", mdp));
-        Log.e("loginCtrl : ", login);
 
         // on fait la requete rest //
         JSONObject returnJson = rest.send("POST", sendData);
-        Log.e("login returnJson: ", returnJson.toString());
 
         // on recup le token //
         try {
@@ -125,7 +99,6 @@ public class ProfessorController {
             }else{
                 //token = value.getInt("token");
                 idProf = value.getInt("professor_id");
-                Log.e("test in id", String.valueOf(idProf));
 
                 return token;
             }

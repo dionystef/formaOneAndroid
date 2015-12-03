@@ -28,7 +28,7 @@ public class Connection extends AsyncTask<String, Integer, JSONObject> {
     private List<NameValuePair> data;
 
     public Connection(String _method, List<NameValuePair> _data) {
-        this.urlServerRest = "http://formaone-webservice.devcomputingsystem.fr/index.php/rest";
+        this.urlServerRest = "http://www.formaone-webservice.devcomputingsystem.fr/index.php/rest";
         this.method = _method;
         this.urlCall = "";
         this.data = _data;
@@ -54,9 +54,14 @@ public class Connection extends AsyncTask<String, Integer, JSONObject> {
 
         try {
             //Create connection
-            url = new URL(urlServerRest);
+            if (method.equals("GET") ){
+                url = new URL(urlServerRest+"?"+urlParameters);
+                Log.e("urlServerRest", url.toString());
+            }else{
+                url = new URL(urlServerRest);
+            }
             connection = (HttpURLConnection)url.openConnection();
-            connection.setRequestMethod("POST");
+            connection.setRequestMethod(method);
             connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             connection.setUseCaches (false);
             connection.setDoInput(true);
@@ -64,15 +69,20 @@ public class Connection extends AsyncTask<String, Integer, JSONObject> {
 
             //Send request
             DataOutputStream wr = new DataOutputStream (connection.getOutputStream ());
-            wr.writeBytes (urlParameters);
+            if (!method.equals("GET")){
+                wr.writeBytes (urlParameters);
+            }
+
             wr.flush ();
             wr.close ();
 
             // on recupere le json //
             String temp = connection.getResponseMessage();
             JSONObject returnJson = new JSONObject(IOUtils.toString(connection.getInputStream()));
+            Log.e("connection returnJson", returnJson.toString());
             return returnJson;
         } catch (Exception e) {
+            Log.e("connection returnJson", e.toString());
             e.printStackTrace();
             return null;
         } finally {
