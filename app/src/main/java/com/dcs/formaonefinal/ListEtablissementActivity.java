@@ -51,11 +51,14 @@ public class ListEtablissementActivity extends AppCompatActivity {
         listViewEtablissement.setAdapter(Adapter);
 
 
-
-
         listViewEtablissement.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Log.e("position", String.valueOf(position));
+                Log.e("id", String.valueOf(id));
+
+                // demarrage de l'activité etablissement //
                 Intent intent = new Intent(ListEtablissementActivity.this, EtablissementActivity.class);
                 startActivity(intent);
             }

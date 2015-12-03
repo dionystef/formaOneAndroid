@@ -9,19 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
+import android.widget.Toast;
 
 import controller.ProfessorController;
-import model.Connection;
-import model.Rest;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -30,10 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText textLogin;
     private EditText textPassword;
     private ProfessorController profCtrl = new ProfessorController(this);
-    private String response;
-    private String urlTypeContact = "?target=enum&action=getContactTypes";
-    private String urlProfessor ="";
-    private int token = 1;
+    private int token = 0;
 
 
     @Override
@@ -50,25 +37,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                // creer une nouvelle connexion pour une demande //
-                Rest rest = new Rest();
-                List<NameValuePair> sendData = new ArrayList<NameValuePair>();
-
-                // remplir le sendData //
-                sendData.add(new BasicNameValuePair("action", "connect"));
-                sendData.add(new BasicNameValuePair("target", "login"));
-                sendData.add(new BasicNameValuePair("login", "campusid"));
-                sendData.add(new BasicNameValuePair("passwd", "campusid"));
-
-                JSONObject returnJson = rest.send("POST", sendData);
-                Log.e("login returnJson: ", returnJson.toString());
-                try {
-                    JSONObject value = returnJson.getJSONObject("value");
-                    //token = value.getInt("token");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Log.e("oups...", e.toString());
-                }
+            token = profCtrl.login(textLogin.getText().toString(), textPassword.getText().toString());
+                Log.e("token: ", String.valueOf(profCtrl.login(textLogin.getText().toString(), textPassword.getText().toString())));
 
                 if (token > 0) {
                     // arguments passés aux autres vues //
@@ -78,7 +48,9 @@ public class LoginActivity extends AppCompatActivity {
                     // demarrage de l'autre vue //
                     startActivity(intent);
                 }else{
-
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(LoginActivity.this, "Erreur mauvais Mdp", duration);
+                    toast.show();
                 }
 
                 // on creer les class avec le json //
@@ -98,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-/*
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -120,5 +92,5 @@ public class LoginActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    */
+
 }

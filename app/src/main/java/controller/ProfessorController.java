@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.codehaus.jackson.JsonFactory;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.JsonParser;
@@ -21,6 +23,7 @@ import java.util.List;
 import model.Contact;
 import model.Enum_contact_type;
 import model.Professeur;
+import model.Rest;
 
 /**
  * Created by dionys on 25/09/15.
@@ -31,6 +34,10 @@ public class ProfessorController {
     private Professeur professeur;
     private Context context;
     private List<Enum_contact_type> enumContactTypes = new ArrayList<Enum_contact_type>();
+    private Rest rest = new Rest();
+    List<NameValuePair> sendData = new ArrayList<NameValuePair>();
+    private int token = 1;
+    private int idProf = 0;
 
     /**
      * Json professeur
@@ -94,4 +101,44 @@ public class ProfessorController {
 
         return 0;
     }
+
+    public int login (String login, String mdp) {
+
+        // on remplie le tableau des data //
+        sendData.add(new BasicNameValuePair("action", "connect"));
+        sendData.add(new BasicNameValuePair("target", "login"));
+        sendData.add(new BasicNameValuePair("login", login));
+        sendData.add(new BasicNameValuePair("passwd", mdp));
+        Log.e("loginCtrl : ", login);
+
+        // on fait la requete rest //
+        JSONObject returnJson = rest.send("POST", sendData);
+        Log.e("login returnJson: ", returnJson.toString());
+
+        // on recup le token //
+        try {
+            JSONObject value = returnJson.getJSONObject("value");
+
+            if (value.isNull("professor_id")) {
+
+                return 0;
+            }else{
+                //token = value.getInt("token");
+                idProf = value.getInt("professor_id");
+                Log.e("test in id", String.valueOf(idProf));
+
+                return token;
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.e("oups...", e.toString());
+
+            return 0;
+        }
+
+    }
+
+
+
 }
