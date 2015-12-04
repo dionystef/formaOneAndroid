@@ -62,19 +62,20 @@ public class Connection extends AsyncTask<String, Integer, JSONObject> {
             }
             connection = (HttpURLConnection)url.openConnection();
             connection.setRequestMethod(method);
-            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-            connection.setUseCaches (false);
-            connection.setDoInput(true);
-            connection.setDoOutput(true);
 
             //Send request
-            DataOutputStream wr = new DataOutputStream (connection.getOutputStream ());
             if (!method.equals("GET")){
+                connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                connection.setUseCaches (false);
+                connection.setDoInput(true);
+                connection.setDoOutput(true);
+                DataOutputStream wr = new DataOutputStream (connection.getOutputStream ());
                 wr.writeBytes (urlParameters);
+                wr.flush ();
+                wr.close ();
             }
 
-            wr.flush ();
-            wr.close ();
+
 
             // on recupere le json //
             String temp = connection.getResponseMessage();
