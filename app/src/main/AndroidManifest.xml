@@ -12,7 +12,7 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@style/Theme.AppCompat.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,13 +26,21 @@
         <activity
             android:name=".ListEtablissementActivity"
             android:label="@string/title_activity_list_etablissement"
-            android:theme="@style/Theme.AppCompat"
-            android:parentActivityName=".HomeActivity">
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/Theme.AppCompat" >
         </activity>
         <activity
             android:name=".EtablissementActivity"
             android:label="@string/title_activity_etablissement"
-            android:parentActivityName=".ListEtablissementActivity">
+            android:parentActivityName=".ListEtablissementActivity" >
+        </activity>
+        <activity
+            android:name=".SubscribeActivity"
+            android:label="@string/title_activity_subscribe"
+            android:parentActivityName=".LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.dcs.formaonefinal.LoginActivity" />
         </activity>
     </application>
 

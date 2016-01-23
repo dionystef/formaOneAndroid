@@ -1,0 +1,85 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="model.StepThreeFragment">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            style="@style/editBox"
+            android:id="@+id/address">
+            <TextView
+                style="@style/label"
+                android:text="Adresse principale"
+                android:id="@+id/textAdresse"/>
+            <EditText
+                style="@style/editext"
+                android:inputType="textPostalAddress"
+                android:id="@+id/editAddress"
+                android:text="20 rue charles baudelaire"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/editBox"
+            android:id="@+id/complementAddress">
+            <TextView
+                style="@style/label"
+                android:text="Complément d&apos;adresse"
+                android:id="@+id/textComplete"/>
+            <EditText
+                style="@style/editext"
+                android:inputType="textPostalAddress"
+                android:id="@+id/editCompleteAddress"
+                android:text="les balcons du ray"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/editBox"
+            android:id="@+id/zipCode">
+            <TextView
+                style="@style/label"
+                android:text="Code postal"
+                android:id="@+id/textZipCode" />
+            <EditText
+                style="@style/editext"
+                android:inputType="number"
+                android:id="@+id/editZipCode"
+                android:text="06100"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/editBox"
+            android:id="@+id/city">
+            <TextView
+                style="@style/label"
+                android:text="Ville"
+                android:id="@+id/textCity"/>
+            <EditText
+                style="@style/editext"
+                android:id="@+id/editCity"
+                android:text="Nice"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/editBoxButton"
+            android:id="@+id/buttonStepOne">
+            <Button
+                style="@style/buttonBack"
+                android:id="@+id/buttonBackStepThree"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
+            <Button
+                style="@style/buttonNext"
+                android:id="@+id/buttonNextStepThree" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</FrameLayout>

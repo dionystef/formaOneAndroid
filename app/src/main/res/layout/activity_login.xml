@@ -11,71 +11,60 @@
     <TextView android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:keepScreenOn="true"
-        android:textColor="#33b5e5"
-        android:textStyle="bold"
-        android:textSize="50sp"
-        android:gravity="top|center"
-        android:text="@string/dummy_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        style="@style/titleApp"
+        android:text="@string/dummy_content"/>
 
-    <EditText
-        android:layout_width="@dimen/large_padding"
-        android:layout_height="wrap_content"
-        android:text="campusid"
-        android:id="@+id/textLogin"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/labelLogin"
-        android:layout_centerHorizontal="true" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/fullscreen_content">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/connect"
-        android:id="@+id/buttonConnect"
-        android:layout_below="@+id/textPassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:clickable="false"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal|bottom" />
+        <LinearLayout
+            style="@style/login_editBox"
+            android:id="@+id/mdp">
+            <TextView
+                style="@style/login_label"
+                android:text="@string/login"
+                android:id="@+id/labelLogin"/>
+            <EditText
+                style="@style/login_editext"
+                android:text="campusid"
+                android:id="@+id/textLogin" />
+        </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/medium_text"
-        android:paddingTop="100dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/login"
-        android:id="@+id/labelLogin"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center" />
+        <LinearLayout
+            style="@style/login_editBox"
+            android:id="@+id/verifMdp">
+            <TextView
+                style="@style/login_label"
+                android:text="@string/password"
+                android:id="@+id/labelPassword"/>
+            <EditText
+                style="@style/login_editext"
+                android:inputType="textPassword"
+                android:text="campusid"
+                android:id="@+id/textPassword"/>
+        </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/medium_text"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/textLogin"
-        android:text="@string/password"
-        android:id="@+id/labelPassword"
-        android:inputType="text"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal|top" />
+        <LinearLayout
+            style="@style/editBoxButton"
+            android:id="@+id/buttonStepOne">
+            <Button
+                style="@style/buttonBack"
+                android:text="Souscription"
+                android:id="@+id/buttonSouscription"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                />
+            <Button
+                style="@style/buttonNext"
+                android:text="@string/connect"
+                android:id="@+id/buttonConnect"/>
+        </LinearLayout>
+    </LinearLayout>
 
-    <EditText
-        android:layout_width="@dimen/large_padding"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:text="campusid"
-        android:ems="10"
-        android:id="@+id/textPassword"
-        android:layout_below="@+id/labelPassword"
-        android:layout_marginTop="15dp"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal|bottom" />
 
 </RelativeLayout>

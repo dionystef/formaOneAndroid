@@ -17,6 +17,7 @@ public class LoginActivity extends AppCompatActivity {
 
     // variables de la vue //
     private Button buttonConnect;
+    private Button buttonSubscribe;
     private EditText textLogin;
     private EditText textPassword;
     private ProfessorController profCtrl = new ProfessorController(this);
@@ -30,16 +31,18 @@ public class LoginActivity extends AppCompatActivity {
 
         // assignation des variables //
         buttonConnect = (Button) findViewById(R.id.buttonConnect);
+        buttonSubscribe = (Button) findViewById(R.id.buttonSouscription);
         textLogin = (EditText) findViewById(R.id.textLogin);
         textPassword = (EditText) findViewById(R.id.textPassword);
 
+        // button connection //
         buttonConnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             token = profCtrl.login(textLogin.getText().toString(), textPassword.getText().toString());
 
-                if (token > 0) {
+                if (token == 0) {
                     // arguments passés aux autres vues //
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     intent.putExtra("token", token);
@@ -66,6 +69,14 @@ public class LoginActivity extends AppCompatActivity {
 
             }
 
+        });
+
+        buttonSubscribe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SubscribeActivity.class);
+                startActivity(intent);
+            }
         });
     }
 

@@ -1,0 +1,69 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="model.StepTwoFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            style="@style/editBox"
+            android:id="@+id/name">
+            <TextView
+                style="@style/label"
+                android:text="Nom de famille"
+                android:id="@+id/textNom"/>
+            <EditText
+                style="@style/editext"
+                android:id="@+id/editName"
+                android:text="hauser"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/editBox"
+            android:id="@+id/prenom">
+            <TextView
+                style="@style/label"
+                android:text="Prénom"
+                android:id="@+id/textPrenom"/>
+            <EditText
+                style="@style/editext"
+                android:id="@+id/editFirstname"
+                android:text="steph"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/editBox"
+            android:id="@+id/phone">
+            <TextView
+                style="@style/label"
+                android:text="Téléphone"
+                android:id="@+id/textPhone"/>
+            <EditText
+                style="@style/editext"
+                android:inputType="phone"
+                android:id="@+id/editPhone"
+                android:text="88"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/editBoxButton"
+            android:id="@+id/buttonStepOne">
+            <Button
+                style="@style/buttonBack"
+                android:id="@+id/buttonBackStepTwo"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
+
+            <Button
+                style="@style/buttonNext"
+                android:id="@+id/buttonNextStepTwo" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</FrameLayout>

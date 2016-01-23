@@ -1,0 +1,72 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="model.StepOneFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            style="@style/editBox"
+            android:id="@+id/mail">
+            <TextView
+                style="@style/label"
+                android:text="Adresse mail"
+                android:id="@+id/labelMail"/>
+            <EditText
+                style="@style/editext"
+                android:inputType="textEmailAddress"
+                android:id="@+id/editMail"
+                android:text="toto@g.com"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/editBox"
+            android:id="@+id/mdp">
+            <TextView
+                style="@style/label"
+                android:text="Mot de passe"
+                android:id="@+id/labelMdp"/>
+            <EditText
+                style="@style/editext"
+                android:inputType="textPassword"
+                android:id="@+id/editMdp"
+                android:text="toto" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/editBox"
+            android:id="@+id/verifMdp">
+            <TextView
+                style="@style/label"
+                android:text="Vérification mot de passe"
+                android:id="@+id/labelVerifMdp"/>
+            <EditText
+                style="@style/editext"
+                android:inputType="textPassword"
+                android:id="@+id/editVerifMdp"
+                android:text="toto"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/editBoxButton"
+            android:id="@+id/buttonStepOne">
+            <Button
+                style="@style/buttonBack"
+                android:id="@+id/buttonBackStepTwo"
+                android:visibility="invisible"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
+            <Button
+                style="@style/buttonNext"
+                android:id="@+id/buttonNextStepOne"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

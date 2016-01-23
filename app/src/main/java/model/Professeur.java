@@ -18,11 +18,13 @@ public class Professeur {
     private int id;
     private Contact contact;
     private Address address;
+    private String beginActivivity;
 
     public Professeur(int _id) {
         this.id = _id;
         this.contact = null;
         this.address = null;
+        this.beginActivivity = "";
     }
 
     public int getId() {
@@ -49,6 +51,13 @@ public class Professeur {
         this.address = address;
     }
 
+    public String getBeginActivivity() {
+        return beginActivivity;
+    }
+
+    public void setBeginActivivity(String beginActivivity) {
+        this.beginActivivity = beginActivivity;
+    }
 
     public void parserJson(JSONObject professeurJson, List<Enum_contact_type> listType) throws JSONException {
 

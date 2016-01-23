@@ -14,5 +14,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_list_etablissement">Liste des établissements</string>
     <string name="title_activity_etablissement">Etablissement</string>
+    <string name="title_activity_subscribe">Connection</string>
+
     
 </resources>

@@ -3,10 +3,123 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+
     </style>
 
     <style name="generalnotitle" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- **************************************************************** -->
+    <!--                            General                               -->
+    <!-- **************************************************************** -->
+
+
+
+
+
+
+    <!-- **************************************************************** -->
+    <!--                        Login Activity                            -->
+    <!-- **************************************************************** -->
+
+    <!-- Titre de l'app sur la page login -->
+    <style name="titleApp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">#33b5e5</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">top|center</item>
+        <item name="android:textSize">50sp</item>
+    </style>
+
+    <!-- linear vertical label + edit text -->
+    <style name="login_editBox" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <!-- label du linear vertical -->
+    <style name="login_label" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">50dp</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- edit text du linear vertical -->
+    <style name="login_editext" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+
+    <!-- **************************************************************** -->
+    <!--                        Subscribe Activity                        -->
+    <!-- **************************************************************** -->
+
+    <!-- linear vertical label + edit text -->
+    <style name="editBox" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_marginLeft">20dp</item>
+    </style>
+
+    <!-- label du linear vertical -->
+    <style name="label" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:textColor">#33b5e5</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+
+    <!-- edit text du linear vertical -->
+    <style name="editext" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <!-- label du linear horizontal button -->
+    <style name="editBoxButton" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginTop">30dp</item>
+    </style>
+
+    <!-- button back du linear vertical -->
+    <style name="buttonBack" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:layout_marginLeft">50dp</item>
+        <item name="android:text">Précédent</item>
+    </style>
+
+    <!-- button next du linear vertical -->
+    <style name="buttonNext" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:layout_marginRight">50dp</item>
+        <item name="android:text">Suivant</item>
+    </style>
+
+    <!-- button terminer du linear vertical -->
+    <style name="buttonFinish" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:layout_marginRight">50dp</item>
+        <item name="android:text">Terminer</item>
     </style>
 
 </resources>
