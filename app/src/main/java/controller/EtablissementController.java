@@ -4,18 +4,14 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import model.Etablissement;
-import model.JsonOffLine;
 import model.Rest;
 
 /**
@@ -25,7 +21,6 @@ public class EtablissementController {
 
     // variables //
     private ArrayList<Etablissement> listEtablissement = new ArrayList<>();
-    private JsonOffLine mock = new JsonOffLine();
     private Rest rest = new Rest();
     private String target = "school";
     private Context context;
@@ -71,10 +66,7 @@ public class EtablissementController {
 
                 for (int i = 0; i < jsonListEtablissement.length(); i++) {
                     JSONObject etablissement = jsonListEtablissement.getJSONObject(i);
-                    int connexion_id = etablissement.getInt("connexion_id");
-                    int id = etablissement.getInt("id");
-                    String name = etablissement.getString("name");
-                    Etablissement etat = new Etablissement(id, name, connexion_id);
+                    Etablissement etat = Etablissement.parserJson(etablissement);
                     this.listEtablissement.add(etat);
                 }
 
@@ -125,7 +117,7 @@ public class EtablissementController {
                 JSONObject value = returnJson.getJSONObject("value");
                 JSONObject company = value.getJSONObject("company");
 
-                return new Etablissement(company.getInt("id"),company.getString("name"), company.getInt("connexion_id"));
+                return Etablissement.parserJson(company);
 
             }else{
                 int error = 0;
@@ -167,9 +159,35 @@ public class EtablissementController {
         // on fait la requete rest //
         JSONObject returnJson = rest.send("GET", etablissement);
 
+        try {
+            Boolean status = returnJson.getBoolean("status");
+            if (status){
+                JSONObject value = returnJson.getJSONObject("value");
+                JSONObject company = value.getJSONObject("company");
+
+                return Etablissement.parserJson(company);
+
+            }else{
+                int error = 0;
+                try {
+                    error = returnJson.getInt("error");
+                } catch (JSONException e1) {
+                    e1.printStackTrace();
+                }
+                switch (error) {
+                    case 1:
+                    case 2:
+                    case 100:
+                        Toast.makeText(context, returnJson.getString("value"), Toast.LENGTH_LONG).show();
+                        break;
+                    default:
+                        Toast.makeText(context, "Erreur interne de l'application", Toast.LENGTH_LONG).show();
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         return null;
+
     }
-
-
-
 }

@@ -13,14 +13,6 @@ public class Address {
     private String zipcode;
     private String city;
 
-    public Address() {
-        this.id = 0;
-        this.main = "";
-        this.secondary = "";
-        this.zipcode = "";
-        this.city = "";
-    }
-
     public int getId() {
         return id;
     }
@@ -61,13 +53,17 @@ public class Address {
         this.city = city;
     }
 
-    public void parserJson(JSONObject addressJson) throws JSONException {
+    public static Address parserJson(JSONObject addressJson) throws JSONException {
 
-        this.id = Integer.parseInt(addressJson.get("id").toString());
-        this.main = addressJson.get("main").toString();
-        this.secondary = addressJson.get("secondary").toString();
-        this.zipcode = addressJson.get("zipcode").toString();
-        this.city = addressJson.get("city").toString();
+        Address adresse = new Address();
+
+        adresse.id = Integer.parseInt(addressJson.get("id").toString());
+        adresse.main = addressJson.get("main").toString();
+        adresse.secondary = addressJson.get("secondary").toString();
+        adresse.zipcode = addressJson.get("zipcode").toString();
+        adresse.city = addressJson.get("city").toString();
+
+        return adresse;
 
     }
 }

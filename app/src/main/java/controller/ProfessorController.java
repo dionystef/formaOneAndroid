@@ -3,25 +3,11 @@ package controller;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.codehaus.jackson.JsonFactory;
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.JsonParser;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import model.Contact;
 import model.Enum_contact_type;
 import model.Professeur;
 import model.Rest;
@@ -35,8 +21,6 @@ public class ProfessorController {
     private Context context;
     private List<Enum_contact_type> enumContactTypes = new ArrayList<Enum_contact_type>();
     private Rest rest = new Rest();
-    private int token = 1;
-    private int idProf = 0;
 
     /**
      * on passe le context au ctlr du prof

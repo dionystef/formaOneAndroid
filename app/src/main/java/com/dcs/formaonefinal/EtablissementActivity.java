@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import java.util.HashMap;
 
 import controller.EtablissementController;
+import model.Etablissement;
 
 public class EtablissementActivity extends AppCompatActivity {
 
@@ -25,11 +26,13 @@ public class EtablissementActivity extends AppCompatActivity {
 
         // recuperation du token //
         Intent intent = getIntent();
-        connexion  = (HashMap<String, String>)intent.getSerializableExtra("connexion");
+        connexion     = (HashMap<String, String>)intent.getSerializableExtra("connexion");
+
         connexion.put("company_id", String.valueOf(intent.getIntExtra("company_id", -1)));
 
-        etablissementCtrl.recupEtablissement(connexion);
+        Etablissement etab = etablissementCtrl.recupEtablissement(connexion);
 
+        Log.e("etablissement: ", etab.getAddress().getMain());
 
     }
 

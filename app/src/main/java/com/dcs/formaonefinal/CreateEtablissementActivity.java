@@ -37,8 +37,8 @@ public class CreateEtablissementActivity extends AppCompatActivity {
         final EditText zipCode         = (EditText) findViewById(R.id.editZipCode);
         final EditText city            = (EditText) findViewById(R.id.editCityEtablissement);
         final EditText begin           = (EditText) findViewById(R.id.editDateActivity);
-        Button buttonNext              = (Button) findViewById(R.id.buttonValideEtablissement);
-        Button buttonBack              = (Button) findViewById(R.id.buttonCancelEtablissement);
+        Button buttonNext              = (Button)   findViewById(R.id.buttonValideEtablissement);
+        Button buttonBack              = (Button)   findViewById(R.id.buttonCancelEtablissement);
 
         // button suivant //
         buttonNext.setOnClickListener(new View.OnClickListener() {
