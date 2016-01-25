@@ -42,6 +42,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.dcs.formaonefinal.LoginActivity" />
         </activity>
+        <activity
+            android:name=".CreateEtablissementActivity"
+            android:label="@string/title_activity_create_etablissement" >
+        </activity>
     </application>
 
 </manifest>

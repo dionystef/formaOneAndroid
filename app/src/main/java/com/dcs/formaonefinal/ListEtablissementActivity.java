@@ -20,6 +20,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import controller.EtablissementController;
 import model.Etablissement;
@@ -30,7 +31,10 @@ public class ListEtablissementActivity extends AppCompatActivity {
     ListView listViewEtablissement;
     TextView nameEtablissemnt;
     ArrayList<Etablissement> listEtablissement = new ArrayList<>();
-    EtablissementController etablissementCtrl = new EtablissementController();
+    EtablissementController etablissementCtrl = new EtablissementController(this);
+    public  final static int mainToDetail = 0;
+    private ArrayAdapter<Etablissement> Adapter;
+    private HashMap<String, String> connexion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +44,18 @@ public class ListEtablissementActivity extends AppCompatActivity {
         listViewEtablissement = (ListView) findViewById(android.R.id.list);
         nameEtablissemnt = (TextView) findViewById(R.id.nameEtablissement);
 
+        // recuperation du token //
+        Intent intent = getIntent();
+        connexion = (HashMap<String, String>)intent.getSerializableExtra("connexion");
+
         try {
-            listEtablissement = etablissementCtrl.recupListEtablissements();
+            listEtablissement = etablissementCtrl.recupListEtablissements(connexion);
         } catch (JSONException e) {
             Log.e("etablissemntCtrl...", e.toString());
             e.printStackTrace();
         }
 
-        ArrayAdapter<Etablissement> Adapter = new ArrayAdapter<Etablissement>(this, R.layout.row_etablissement, listEtablissement);
+        Adapter = new ArrayAdapter<Etablissement>(this, R.layout.row_etablissement, listEtablissement);
         listViewEtablissement.setAdapter(Adapter);
 
 
@@ -55,11 +63,12 @@ public class ListEtablissementActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Log.e("position", String.valueOf(position));
-                Log.e("id", String.valueOf(id));
+                Etablissement item = (Etablissement) listEtablissement.get(position);
 
                 // demarrage de l'activité etablissement //
                 Intent intent = new Intent(ListEtablissementActivity.this, EtablissementActivity.class);
+                intent.putExtra("company_id", item.getId());
+                intent.putExtra("connexion", connexion);
                 startActivity(intent);
             }
         });
@@ -82,11 +91,27 @@ public class ListEtablissementActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent detail = new Intent(getApplication(), CreateEtablissementActivity.class);
+            startActivityForResult(detail, mainToDetail);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        // reponse de l'autre activité //
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 0 && data != null) {
+            if (resultCode == 0) {
+                Etablissement temp = etablissementCtrl.createEtablissement(connexion, (HashMap<String, String>) data.getSerializableExtra("retourCreateEtablissement"));
+                Adapter.add(temp);
+                listViewEtablissement.setAdapter(Adapter);
+            }
+        }
+
+    }
 }

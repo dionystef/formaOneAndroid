@@ -18,7 +18,7 @@
                 style="@style/editext"
                 android:inputType="date"
                 android:id="@+id/editDateActivity"
-                android:text="12.1.1"/>
+                android:text="2012-01-01"/>
         </LinearLayout>
 
         <LinearLayout

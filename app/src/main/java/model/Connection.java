@@ -14,7 +14,9 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by dionys on 27/09/15.
@@ -25,9 +27,9 @@ public class Connection extends AsyncTask<String, Integer, JSONObject> {
     private String urlCall;
     private String method;
     private String response;
-    private List<NameValuePair> data;
+    private HashMap<String, String> data;
 
-    public Connection(String _method, List<NameValuePair> _data) {
+    public Connection(String _method, HashMap _data) {
         this.urlServerRest = "http://www.formaone-webservice.devcomputingsystem.fr/index.php/rest";
         this.method = _method;
         this.urlCall = "";
@@ -43,25 +45,31 @@ public class Connection extends AsyncTask<String, Integer, JSONObject> {
         String urlParameters = "";
         boolean first = true;
 
-        for (NameValuePair item : this.data){
+        for(Map.Entry<String, String> entry : data.entrySet()) {
+            String cle = entry.getKey();
+            String valeur = entry.getValue();
+
             if(first) {
-                urlParameters += item.getName() + "=" + item.getValue();
+                urlParameters += cle + "=" + valeur;
                 first = false;
             } else {
-                urlParameters += "&" + item.getName() + "=" + item.getValue();
+                urlParameters += "&" + cle + "=" + valeur;
             }
         }
+
 
         try {
             //Create connection
             if (method.equals("GET") ){
                 url = new URL(urlServerRest+"?"+urlParameters);
-                Log.e("urlServerRest", url.toString());
+
             }else{
                 url = new URL(urlServerRest);
             }
             connection = (HttpURLConnection)url.openConnection();
             connection.setRequestMethod(method);
+
+            Log.e("urlServerRest", urlParameters);
 
             //Send request
             if (!method.equals("GET")){
@@ -75,15 +83,13 @@ public class Connection extends AsyncTask<String, Integer, JSONObject> {
                 wr.close ();
             }
 
-
-
             // on recupere le json //
             String temp = connection.getResponseMessage();
             JSONObject returnJson = new JSONObject(IOUtils.toString(connection.getInputStream()));
             Log.e("connection returnJson", returnJson.toString());
             return returnJson;
         } catch (Exception e) {
-            Log.e("connection returnJson", e.toString());
+            Log.e("C connection returnJson", e.toString());
             e.printStackTrace();
             return null;
         } finally {

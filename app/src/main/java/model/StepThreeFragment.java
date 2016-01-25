@@ -114,7 +114,7 @@ public class StepThreeFragment extends Fragment {
 
         if (!addressUser.equals("")){
             //info.add(addressUser);
-            infos.put("address", addressUser);
+            infos.put("main", addressUser);
         }else{
             Toast.makeText(getActivity(),
                     "adresse vide !", Toast.LENGTH_SHORT).show();
@@ -122,15 +122,15 @@ public class StepThreeFragment extends Fragment {
 
         if (!completeAddressUser.equals("")){
             //info.add(completeAddressUser);
-            infos.put("completeAddress", completeAddressUser);
+            infos.put("secondary", completeAddressUser);
         }else{
             //info.add("");
-            infos.put("completeAddress", "");
+            infos.put("secondary", "");
         }
 
         if (!zipCodeUser.equals("")){
             //info.add(zipCodeUser);
-            infos.put("zipCode", zipCodeUser);
+            infos.put("zipcode", zipCodeUser);
         }else{
             Toast.makeText(getActivity(),
                     "code postal vide !", Toast.LENGTH_SHORT).show();

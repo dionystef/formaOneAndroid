@@ -5,6 +5,7 @@ import android.util.Log;
 import org.apache.http.NameValuePair;
 import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -13,7 +14,7 @@ import java.util.concurrent.ExecutionException;
  */
 public class Rest {
 
-    public JSONObject send (String type, List<NameValuePair> data){
+    public JSONObject send (String type, HashMap data){
 
         Connection c = new Connection(type, data);
         c.execute();

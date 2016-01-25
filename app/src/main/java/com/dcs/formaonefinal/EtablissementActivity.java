@@ -1,17 +1,36 @@
 package com.dcs.formaonefinal;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.HashMap;
+
+import controller.EtablissementController;
+
 public class EtablissementActivity extends AppCompatActivity {
+
+    private HashMap connexion;
+    private int     company_id;
+    private EtablissementController etablissementCtrl = new EtablissementController(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_etablissement);
+
+        // recuperation du token //
+        Intent intent = getIntent();
+        connexion  = (HashMap<String, String>)intent.getSerializableExtra("connexion");
+        connexion.put("company_id", String.valueOf(intent.getIntExtra("company_id", -1)));
+
+        etablissementCtrl.recupEtablissement(connexion);
+
+
     }
 
     @Override

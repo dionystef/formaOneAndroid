@@ -29,7 +29,7 @@
                 android:id="@+id/labelLogin"/>
             <EditText
                 style="@style/login_editext"
-                android:text="campusid"
+                android:text="toto@g.com"
                 android:id="@+id/textLogin" />
         </LinearLayout>
 
@@ -43,7 +43,7 @@
             <EditText
                 style="@style/login_editext"
                 android:inputType="textPassword"
-                android:text="campusid"
+                android:text="toto"
                 android:id="@+id/textPassword"/>
         </LinearLayout>
 

@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import model.Contact;
@@ -30,12 +31,10 @@ import model.Rest;
  */
 public class ProfessorController {
 
-    private Enum_contact_type contactType;
     private Professeur professeur;
     private Context context;
     private List<Enum_contact_type> enumContactTypes = new ArrayList<Enum_contact_type>();
     private Rest rest = new Rest();
-    private List<NameValuePair> sendData = new ArrayList<NameValuePair>();
     private int token = 1;
     private int idProf = 0;
 
@@ -78,38 +77,79 @@ public class ProfessorController {
         return 0;
     }
 
-    public int login (String login, String mdp) {
+    /**
+     * Connection
+     * @param
+     * @param
+     * @return
+     */
+    public HashMap login (HashMap sendData) {
 
-        // on remplie le tableau des data //
-        sendData.add(new BasicNameValuePair("action", "connect"));
-        sendData.add(new BasicNameValuePair("target", "login"));
-        sendData.add(new BasicNameValuePair("login", login));
-        sendData.add(new BasicNameValuePair("passwd", mdp));
+        sendData.put("action", "connexion");
+        sendData.put("target", "connexion");
 
         // on fait la requete rest //
         JSONObject returnJson = rest.send("POST", sendData);
 
         // on recup le token //
         try {
-            JSONObject value = returnJson.getJSONObject("value");
+            Boolean status = returnJson.getBoolean("status");
+            if (status){
+                JSONObject value = returnJson.getJSONObject("value");
 
-            if (value.isNull("professor_id")) {
+                // constitution de la HashMap //
+                HashMap<String, String> connexion = new HashMap<>();
 
-                return 0;
+                connexion.put("login_id", String.valueOf(value.getInt("login_id")));
+                connexion.put("company_id", (value.get("company_id").equals(null) ? "" : String.valueOf(value.getInt("company_id"))));
+                connexion.put("right_id", String.valueOf(value.getInt("right_id")));
+                connexion.put("token", value.getString("token"));
+
+                return connexion;
+
             }else{
-                //token = value.getInt("token");
-                idProf = value.getInt("professor_id");
-
-                return token;
+                int error = returnJson.getInt("error");
+                switch (error) {
+                    case 1:
+                    case 100:
+                    case 101:
+                        Toast.makeText(context, returnJson.getString("value"), Toast.LENGTH_LONG).show();
+                        break;
+                    default:
+                        Toast.makeText(context, "Erreur interne de l'application", Toast.LENGTH_LONG).show();
+                }
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
             Log.e("oups...", e.toString());
 
-            return 0;
+            return null;
         }
 
+        return null;
+    }
+
+    public int souscription (HashMap sendData) {
+
+        sendData.put("action", "subscription");
+        sendData.put("target", "connexion");
+
+        // on fait la requete rest //
+        JSONObject returnJson = rest.send("POST", sendData);
+
+        // on recup le token //
+        try {
+            Boolean status = returnJson.getBoolean("status");
+
+            Log.e("profControl: ", status.toString());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.e("oups...", e.toString());
+        }
+
+        return 0;
     }
 
 

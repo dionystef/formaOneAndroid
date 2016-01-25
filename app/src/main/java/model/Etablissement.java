@@ -13,10 +13,12 @@ public class Etablissement {
     private String name;
     private Contact contact;
     private Address address;
+    private int connexion_id;
 
-    public Etablissement(int _id, String _name) {
+    public Etablissement(int _id, String _name, int _connexion_id) {
         this.name = _name;
         this.id = _id;
+        this.connexion_id = _connexion_id;
         this.contact = null;
         this.address = null;
     }

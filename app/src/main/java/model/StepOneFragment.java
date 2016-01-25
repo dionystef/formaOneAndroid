@@ -112,7 +112,7 @@ public class StepOneFragment extends Fragment {
 
         if (!mailUser.equals("")){
             //info.add(mailUser);
-            infos.put("mail", mailUser);
+            infos.put("login", mailUser);
         }else{
             Toast.makeText(getActivity(),
                     "mail vide !", Toast.LENGTH_SHORT).show();
@@ -121,7 +121,7 @@ public class StepOneFragment extends Fragment {
         if(!mdpUser.equals("") || !verifMdpUser.equals("")){
             if (mdpUser.equals(verifMdpUser)) {
                 //info.add(mdpUser);
-                infos.put("mdp", mdpUser);
+                infos.put("passwd", mdpUser);
             }else{
                 Toast.makeText(getActivity(),
                         "mot de passe différents !", Toast.LENGTH_SHORT).show();

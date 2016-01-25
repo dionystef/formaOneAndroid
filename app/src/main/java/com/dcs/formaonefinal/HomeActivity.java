@@ -9,9 +9,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.HashMap;
+
 public class HomeActivity extends AppCompatActivity {
     // variables //
-    int token = 0;
     Button buttonEtudiant;
     Button buttonEtablissement;
 
@@ -22,11 +23,10 @@ public class HomeActivity extends AppCompatActivity {
 
         // recuperation du token //
         Intent intent = getIntent();
-        token = intent.getIntExtra("token", -1);
-        Log.e("HomeActivity token : ", Integer.toString(token));
+        final HashMap<String, String> connexion = (HashMap<String, String>)intent.getSerializableExtra("connexion");
 
         // assignation des variables a la vue //
-        buttonEtudiant = (Button) findViewById(R.id.buttonEtudiant);
+        buttonEtudiant      = (Button) findViewById(R.id.buttonEtudiant);
         buttonEtablissement = (Button) findViewById(R.id.buttonEtablissement);
 
         // bouton etablissement //
@@ -36,15 +36,12 @@ public class HomeActivity extends AppCompatActivity {
 
                 // arguments passés aux autres vues //
                 Intent intent = new Intent(HomeActivity.this, ListEtablissementActivity.class);
-                intent.putExtra("token", token);
+                intent.putExtra("connexion", connexion);
 
                 // demarrage de l'autre vue //
                 startActivity(intent);
-
             }
         });
-
-
     }
 
     @Override

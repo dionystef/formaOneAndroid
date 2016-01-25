@@ -96,7 +96,7 @@ public class StepFinalFragment extends Fragment {
 
         if (!dateActivityUser.equals("")){
             //info.add(dateActivityUser);
-            infos.put("dateActivity", dateActivityUser);
+            infos.put("begin", dateActivityUser);
         }else{
             Toast.makeText(getActivity(),
                     "ville vide !", Toast.LENGTH_SHORT).show();

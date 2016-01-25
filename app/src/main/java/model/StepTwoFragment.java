@@ -117,7 +117,7 @@ public class StepTwoFragment extends Fragment {
 
         if (!nameUser.equals("")){
             //info.add(nameUser);
-            infos.put("name", nameUser);
+            infos.put("lastname", nameUser);
         }else{
             Toast.makeText(getActivity(),
                     "nom vide !", Toast.LENGTH_SHORT).show();

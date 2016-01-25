@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import controller.ProfessorController;
 import model.StepFinalFragment;
 import model.StepOneFragment;
 import model.StepThreeFragment;
@@ -25,6 +26,9 @@ public class SubscribeActivity extends AppCompatActivity implements StepTwoFragm
                                                                     StepOneFragment.OnFragmentInteractionListener,
                                                                     StepThreeFragment.OnFragmentInteractionListener,
                                                                     StepFinalFragment.OnFragmentInteractionListener{
+
+    // profCtrl //
+    ProfessorController profCtrl = new ProfessorController(this);
 
     // fragment //
     StepOneFragment stephOne = new StepOneFragment();
@@ -118,6 +122,7 @@ public class SubscribeActivity extends AppCompatActivity implements StepTwoFragm
                     Log.e(cle,": "+valeur);
                 }
                 finish();
+                profCtrl.souscription(infoUser);
             }
         }
     }

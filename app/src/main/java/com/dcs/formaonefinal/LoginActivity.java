@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 import controller.ProfessorController;
 
 public class LoginActivity extends AppCompatActivity {
@@ -21,7 +23,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText textLogin;
     private EditText textPassword;
     private ProfessorController profCtrl = new ProfessorController(this);
-    private int token = 0;
 
 
     @Override
@@ -40,34 +41,19 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-            token = profCtrl.login(textLogin.getText().toString(), textPassword.getText().toString());
+                HashMap<String, String> sendData = new HashMap<String, String>();
+                sendData.put("login", textLogin.getText().toString());
+                sendData.put("passwd", textPassword.getText().toString());
 
-                if (token == 0) {
-                    // arguments passés aux autres vues //
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                    intent.putExtra("token", token);
+            HashMap connexion = profCtrl.login(sendData);
 
-                    // demarrage de l'autre vue //
-                    startActivity(intent);
-                }else{
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(LoginActivity.this, "Erreur mauvais Mdp", duration);
-                    toast.show();
+             // arguments passés aux autres vues //
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            intent.putExtra("connexion", connexion);
+
+             // demarrage de l'autre vue //
+            startActivity(intent);
                 }
-
-                // on creer les class avec le json //
-               // profCtrl.init(loginActivity.response);
-
-                /*
-                    // arguments passés aux autres vues //
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                    //intent.putExtra("professeur", professeurId);
-
-                    // demarrage de l'autre vue //
-                    startActivity(intent);
-                */
-
-            }
 
         });
 
