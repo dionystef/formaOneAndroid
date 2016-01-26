@@ -15,7 +15,6 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -26,18 +25,15 @@
         <activity
             android:name=".ListEtablissementActivity"
             android:label="@string/title_activity_list_etablissement"
-            android:parentActivityName=".HomeActivity"
             android:theme="@style/Theme.AppCompat" >
         </activity>
         <activity
             android:name=".EtablissementActivity"
-            android:label="@string/title_activity_etablissement"
-            android:parentActivityName=".ListEtablissementActivity" >
+            android:label="@string/title_activity_etablissement">
         </activity>
         <activity
             android:name=".SubscribeActivity"
-            android:label="@string/title_activity_subscribe"
-            android:parentActivityName=".LoginActivity" >
+            android:label="@string/title_activity_subscribe">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.dcs.formaonefinal.LoginActivity" />

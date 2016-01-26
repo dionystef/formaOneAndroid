@@ -52,11 +52,11 @@ public class Etablissement {
 
         Etablissement et = new Etablissement();
 
-        et.contact = new Contact();
-        et.address = new Address();
-        et.id = json.getInt("id");
+        et.contact      = new Contact();
+        et.address      = new Address();
+        et.id           = json.getInt("id");
         et.connexion_id = json.getInt("connexion_id");
-        et.name = json.getString("name");
+        et.name         = json.getString("name");
 
         if(!json.isNull("address")) {
             et.address = Address.parserJson(json.getJSONObject("address"));

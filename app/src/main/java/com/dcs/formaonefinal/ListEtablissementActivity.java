@@ -32,7 +32,8 @@ public class ListEtablissementActivity extends AppCompatActivity {
     TextView nameEtablissemnt;
     ArrayList<Etablissement> listEtablissement = new ArrayList<>();
     EtablissementController etablissementCtrl = new EtablissementController(this);
-    public  final static int mainToDetail = 0;
+    private  final static int mainToDetail = 0;
+    private  final static int listEtabToEtab = 1;
     private ArrayAdapter<Etablissement> Adapter;
     private HashMap<String, String> connexion;
 
@@ -69,7 +70,7 @@ public class ListEtablissementActivity extends AppCompatActivity {
                 Intent intent = new Intent(ListEtablissementActivity.this, EtablissementActivity.class);
                 intent.putExtra("company_id", item.getId());
                 intent.putExtra("connexion", connexion);
-                startActivity(intent);
+                startActivityForResult(intent, listEtabToEtab);
             }
         });
 
@@ -113,5 +114,17 @@ public class ListEtablissementActivity extends AppCompatActivity {
             }
         }
 
+        if (requestCode == 1 && data != null) {
+            try {
+                listEtablissement = etablissementCtrl.recupListEtablissements(connexion);
+                listViewEtablissement.setAdapter(Adapter);
+            } catch (JSONException e) {
+                Log.e("etablissemntCtrl...", e.toString());
+                e.printStackTrace();
+            }
+        }
+
     }
+
+
 }

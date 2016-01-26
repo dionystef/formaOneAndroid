@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import java.util.HashMap;
 
@@ -15,14 +17,24 @@ import model.Etablissement;
 
 public class EtablissementActivity extends AppCompatActivity {
 
+    private EtablissementController etablissementCtrl = new EtablissementController(this);
     private HashMap connexion;
     private int     company_id;
-    private EtablissementController etablissementCtrl = new EtablissementController(this);
+    private TextView nom;
+    private TextView adresse;
+    private TextView complement;
+    private TextView zipCodeCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_etablissement);
+
+        // assignation des vues //
+        nom = (TextView) findViewById(R.id.etablissementName);
+        adresse = (TextView) findViewById(R.id.etablissementAdresse);
+        complement = (TextView) findViewById(R.id.etablissementComplement);
+        zipCodeCity = (TextView) findViewById(R.id.etablissementZipCodeCity);
 
         // recuperation du token //
         Intent intent = getIntent();
@@ -32,8 +44,26 @@ public class EtablissementActivity extends AppCompatActivity {
 
         Etablissement etab = etablissementCtrl.recupEtablissement(connexion);
 
-        Log.e("etablissement: ", etab.getAddress().getMain());
+        // set les valeurs a la vue //
+        nom.setText(etab.getName());
+        adresse.setText(etab.getAddress().getMain());
+        if (etab.getAddress().getSecondary() != ""){
+            complement.setVisibility(View.VISIBLE);
+            complement.setText(etab.getAddress().getSecondary());
+        }
+        zipCodeCity.setText(etab.getAddress().getZipcode() + "  " + etab.getAddress().getCity());
 
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        Log.e("etab: ", "back");
+        super.onBackPressed();
+        // intent de retour //
+        Intent retourMain = new Intent(this, ListEtablissementActivity.class);
+        setResult(1, retourMain);
+        finish();
     }
 
     @Override
