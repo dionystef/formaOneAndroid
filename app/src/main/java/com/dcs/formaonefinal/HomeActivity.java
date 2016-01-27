@@ -42,6 +42,20 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // bouton étudiant //
+        buttonEtudiant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // arguments passés aux autres vues //
+                Intent intent = new Intent(HomeActivity.this, ListStudentActivity.class);
+                intent.putExtra("connexion", connexion);
+
+                // demarrage de l'autre vue //
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

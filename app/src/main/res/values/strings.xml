@@ -16,6 +16,7 @@
     <string name="title_activity_etablissement">Etablissement</string>
     <string name="title_activity_subscribe">Connection</string>
     <string name="title_activity_create_etablissement">CreateEtablissementActivity</string>
+    <string name="title_activity_list_student">ListStudentActivity</string>
 
-    
+
 </resources>
