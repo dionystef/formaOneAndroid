@@ -16,7 +16,18 @@
     <string name="title_activity_etablissement">Etablissement</string>
     <string name="title_activity_subscribe">Connection</string>
     <string name="title_activity_create_etablissement">CreateEtablissementActivity</string>
-    <string name="title_activity_list_student">ListStudentActivity</string>
+    <string name="title_activity_list_student">Liste des étudiants</string>
+    <string name="title_activity_contact">Gestion d\'un contact</string>
 
-
+    <string name="label_firstname">Prénom</string>
+    <string name="label_lastname">Nom de famille</string>
+    <string name="label_phone">Téléphone</string>
+    <string name="label_mail">Adresse email</string>
+    <string name="label_main">Adresse principale</string>
+    <string name="label_secondary">Adresse complémentaire</string>
+    <string name="label_zipcode">Code postal</string>
+    <string name="label_city">Ville</string>
+    <string name="label_begin">Début de l\'activité</string>
+    <string name="label_cancel">Annuler</string>
+    <string name="label_save">Enregistrer</string>
 </resources>

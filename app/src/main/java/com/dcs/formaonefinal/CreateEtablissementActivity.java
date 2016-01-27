@@ -3,7 +3,6 @@ package com.dcs.formaonefinal;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,13 +14,6 @@ import java.util.HashMap;
 public class CreateEtablissementActivity extends AppCompatActivity {
 
     CreateEtablissementActivity detailActivity = this;
-
-    private String addressUser;
-    private String completeAddressUser;
-    private String zipCodeUser;
-    private String cityUser;
-    private String nameEtablissement;
-    private String beginEtablissement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

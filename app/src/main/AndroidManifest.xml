@@ -21,14 +21,14 @@
         </activity>
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home"></activity>
+            android:label="@string/title_activity_home" />
         <activity
             android:name=".ListEtablissementActivity"
             android:label="@string/title_activity_list_etablissement"
-            android:theme="@style/Theme.AppCompat"></activity>
+            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".EtablissementActivity"
-            android:label="@string/title_activity_etablissement"></activity>
+            android:label="@string/title_activity_etablissement" />
         <activity
             android:name=".SubscribeActivity"
             android:label="@string/title_activity_subscribe">
@@ -38,10 +38,15 @@
         </activity>
         <activity
             android:name=".CreateEtablissementActivity"
-            android:label="@string/title_activity_create_etablissement"></activity>
+            android:label="@string/title_activity_create_etablissement" />
         <activity
             android:name=".ListStudentActivity"
-            android:label="@string/title_activity_list_student"></activity>
+            android:label="@string/title_activity_list_student"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".ContactActivity"
+            android:label="@string/title_activity_contact"
+            android:theme="@style/Theme.AppCompat"/>
     </application>
 
 </manifest>

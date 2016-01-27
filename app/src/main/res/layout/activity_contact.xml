@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.dcs.formaonefinal.ContactActivity">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView" >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout style="@style/editBox">
+                <TextView style="@style/label" android:text="@string/label_firstname" />
+                <EditText style="@style/editext" android:id="@+id/firstname" android:text="Oliver"/>
+            </LinearLayout>
+            <LinearLayout style="@style/editBox">
+                <TextView style="@style/label" android:text="@string/label_lastname" />
+                <EditText style="@style/editext" android:id="@+id/lastname" android:text="Spicer"/>
+            </LinearLayout>
+            <LinearLayout style="@style/editBox">
+                <TextView style="@style/label" android:text="@string/label_phone" />
+                <EditText style="@style/editext" android:id="@+id/phone" android:text="0619610680"/>
+            </LinearLayout>
+            <LinearLayout style="@style/editBox">
+                <TextView style="@style/label" android:text="@string/label_mail" />
+                <EditText style="@style/editext" android:inputType="textEmailAddress" android:id="@+id/mail" android:text="o.spicer@gmail.com"/>
+            </LinearLayout>
+            <LinearLayout style="@style/editBox">
+                <TextView style="@style/label" android:text="@string/label_main" />
+                <EditText style="@style/editext" android:id="@+id/main" android:text="1, promenade des anglais"/>
+            </LinearLayout>
+            <LinearLayout style="@style/editBox">
+                <TextView style="@style/label" android:text="@string/label_secondary" />
+                <EditText style="@style/editext" android:id="@+id/secondary" android:text="Résidence Napoléon"/>
+            </LinearLayout>
+            <LinearLayout style="@style/editBox">
+                <TextView style="@style/label" android:text="@string/label_zipcode" />
+                <EditText style="@style/editext" android:maxLength="5" android:id="@+id/zipcode" android:text="06000"/>
+            </LinearLayout>
+            <LinearLayout style="@style/editBox">
+                <TextView style="@style/label" android:text="@string/label_city" />
+                <EditText style="@style/editext" android:id="@+id/city" android:text="Nice"/>
+            </LinearLayout>
+            <LinearLayout style="@style/editBox">
+                <TextView style="@style/label" android:text="@string/label_city"/>
+                <EditText style="@style/editext" android:inputType="date" android:id="@+id/begin" android:text="2015-12-25"/>
+            </LinearLayout>
+            <LinearLayout style="@style/editBoxButton">
+                <Button style="@style/buttonBack" android:id="@+id/cancel" android:text="@string/label_cancel"/>
+                <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" />
+                <Button style="@style/buttonNext" android:id="@+id/save" android:text="@string/label_save"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

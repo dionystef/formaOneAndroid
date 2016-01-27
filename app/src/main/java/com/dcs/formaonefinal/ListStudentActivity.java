@@ -2,23 +2,32 @@ package com.dcs.formaonefinal;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import controller.StudentController;
+import model.Etablissement;
 import model.Person;
 
-public class ListStudentActivity extends Activity {
+public class ListStudentActivity extends AppCompatActivity {
 
     protected ListView                  listViewStudent;
     protected HashMap<String, String>   connexion;
     protected ArrayAdapter<Person>      adapter;
-    protected ArrayList<Person>         listStudent         = new ArrayList<>();
-    protected StudentController         studentController   = new StudentController(this);
+    protected ArrayList<Person>         listStudent             = new ArrayList<>();
+    protected StudentController         studentController       = new StudentController(this);
+    private  final static int           listStudentToContact    = 0;
+    protected ListStudentActivity       activity = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +62,47 @@ public class ListStudentActivity extends Activity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_list_student, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            Intent createStudent = new Intent(getApplication(), ContactActivity.class);
+            startActivityForResult(createStudent, listStudentToContact);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        // reponse de l'autre activité //
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Ajout d'un étudiant
+        if (requestCode == 0 && data != null) {
+            if (resultCode == 0) {
+                //Etablissement temp = etablissementCtrl.createEtablissement(connexion, (HashMap<String, String>) data.getSerializableExtra("retourCreateEtablissement"));
+                //Adapter.add(temp);
+                //listViewEtablissement.setAdapter(Adapter);
+            }
+        }
     }
 }
