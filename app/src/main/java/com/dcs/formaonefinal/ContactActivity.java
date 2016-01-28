@@ -37,8 +37,6 @@ public class ContactActivity extends AppCompatActivity {
         Button save                 = (Button)   findViewById(R.id.save);
         Button cancel               = (Button)   findViewById(R.id.cancel);
 
-
-
         final HashMap<String, String> contact = new HashMap<>();
 
 
