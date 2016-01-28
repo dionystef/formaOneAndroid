@@ -10,13 +10,34 @@ public class Person {
     protected String    mail;
     protected String    phone;
 
+    public int getId() {
+        return id;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
     public static Person parserJson(JSONObject json) throws JSONException {
-        Person p    = new Person();
-        p.id        = json.getInt("id");
-        p.firstname = json.getString("firstname");
-        p.lastname  = json.getString("lastname");
-        p.phone     = json.getString("phone");
-        p.mail      = json.getString("mail");
-        return p;
+        Person person    = new Person();
+        person.id        = json.getInt("id");
+        JSONObject contact = json.getJSONObject("contact");
+        person.firstname = contact.getString("firstname");
+        person.lastname  = contact.getString("lastname");
+        person.phone     = contact.getString("phone");
+        person.mail      = contact.getString("mail");
+        return person;
     }
 }

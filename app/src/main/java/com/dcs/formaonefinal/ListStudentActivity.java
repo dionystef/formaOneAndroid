@@ -3,7 +3,6 @@ package com.dcs.formaonefinal;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,12 +10,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import org.json.JSONException;
-
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import Adapter.PersonAdapter;
 import controller.StudentController;
-import model.Etablissement;
 import model.Person;
 
 public class ListStudentActivity extends AppCompatActivity {
@@ -34,7 +32,7 @@ public class ListStudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_student);
 
-        listViewStudent = (ListView) findViewById(android.R.id.list);
+        listViewStudent = (ListView) findViewById(R.id.listStudent);
 
         // Récupération des informations de connexion au webservice
         Intent intent = getIntent();
@@ -42,7 +40,7 @@ public class ListStudentActivity extends AppCompatActivity {
 
         listStudent = studentController.getList(connexion);
         if(listStudent != null) {
-            adapter = new ArrayAdapter<>(this, R.layout.row_student, listStudent);
+            adapter = new PersonAdapter(this, listStudent);
             listViewStudent.setAdapter(adapter);
         }
 
@@ -99,9 +97,12 @@ public class ListStudentActivity extends AppCompatActivity {
         // Ajout d'un étudiant
         if (requestCode == 0 && data != null) {
             if (resultCode == 0) {
-                //Etablissement temp = etablissementCtrl.createEtablissement(connexion, (HashMap<String, String>) data.getSerializableExtra("retourCreateEtablissement"));
-                //Adapter.add(temp);
-                //listViewEtablissement.setAdapter(Adapter);
+                Person temp = studentController.create(connexion, (HashMap<String, String>) data.getSerializableExtra("retour"));
+                if(temp != null) {
+                    adapter.add(temp);
+                    listViewStudent.setAdapter(adapter);
+                }
+
             }
         }
     }

@@ -66,7 +66,7 @@ public class ContactActivity extends AppCompatActivity {
 
                 // Retour
                 Intent intent = new Intent(activity, componentName.getClass());
-                intent.putExtra("retourCreateEtablissement", contact);
+                intent.putExtra("retour", contact);
                 setResult(0, intent);
                 finish();
             }
