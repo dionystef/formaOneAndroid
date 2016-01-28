@@ -46,7 +46,10 @@
         <activity
             android:name=".ContactActivity"
             android:label="@string/title_activity_contact"
-            android:theme="@style/Theme.AppCompat"/>
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".StudentActivity"
+            android:label="@string/title_activity_student"></activity>
     </application>
 
 </manifest>

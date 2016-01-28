@@ -38,7 +38,7 @@
             </LinearLayout>
             <LinearLayout style="@style/editBox">
                 <TextView style="@style/label" android:text="@string/label_secondary" />
-                <EditText style="@style/editext" android:id="@+id/secondary" android:text="Résidence Napoléon"/>
+                <EditText style="@style/editext" android:id="@+id/secondary" android:text="Residence Napoleon"/>
             </LinearLayout>
             <LinearLayout style="@style/editBox">
                 <TextView style="@style/label" android:text="@string/label_zipcode" />
@@ -49,7 +49,7 @@
                 <EditText style="@style/editext" android:id="@+id/city" android:text="Nice"/>
             </LinearLayout>
             <LinearLayout style="@style/editBox">
-                <TextView style="@style/label" android:text="@string/label_city"/>
+                <TextView style="@style/label" android:text="@string/label_begin"/>
                 <EditText style="@style/editext" android:inputType="date" android:id="@+id/begin" android:text="2015-12-25"/>
             </LinearLayout>
             <LinearLayout style="@style/editBoxButton">
