@@ -14,33 +14,45 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            style="@style/editBox">
+            style="@style/editBoxEtablissement"
+            android:layout_marginBottom="20dp">
             <TextView
-                style="@style/label"
+                style="@style/labelEtablissement"
                 android:id="@+id/etablissementName"
-                android:text="nom"/>
+                android:text="nom"
+                android:textStyle="bold"
+                android:textColor="#33b5e5"/>
         </LinearLayout>
 
         <LinearLayout
-            style="@style/editBox">
+            style="@style/editBoxEtablissement">
             <TextView
-                style="@style/label"
+                style="@style/labelEtablissement"
                 android:id="@+id/etablissementAdresse"
                 android:text="Mot de passe"/>
             <TextView
-                style="@style/label"
+                style="@style/labelEtablissement"
                 android:id="@+id/etablissementComplement"
                 android:text="toto"
                 android:visibility="invisible"/>
         </LinearLayout>
 
         <LinearLayout
-            style="@style/editBox">
+            style="@style/editBoxEtablissement">
             <TextView
-                style="@style/label"
+                style="@style/labelEtablissement"
                 android:id="@+id/etablissementZipCodeCity"
                 android:text="Vérification mot de passe"/>
         </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="liste des contacts"
+            android:id="@+id/button"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"/>
+
 
     </LinearLayout>
 
